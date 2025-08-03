@@ -25,6 +25,15 @@ describe('UserController', () => {
             status: 'success',
             message: 'User created',
         });
+        expect(res.body.data).toMatchObject({
+            user: expect.objectContaining({
+                email: validUser.email,
+                name: validUser.name,
+                role: validUser.role,
+            }),
+        });
+        expect(typeof res.body.data.token).toBe('string');
+        expect(res.body.data.token.length).toBeGreaterThan(0);
     });
 
     it('should return 409 for duplicate email', async () => {
@@ -62,10 +71,16 @@ describe('UserController', () => {
             code: 200,
             status: 'success',
             message: 'User found',
-            data: expect.objectContaining({
+        });
+        expect(res.body.data).toMatchObject({
+            user: expect.objectContaining({
                 email: validUser.email,
+                name: validUser.name,
+                role: validUser.role,
             }),
         });
+        expect(typeof res.body.data.token).toBe('string');
+        expect(res.body.data.token.length).toBeGreaterThan(0);
     });
 
     it('should return 404 for non-existing user', async () => {

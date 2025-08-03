@@ -8,6 +8,13 @@ export const swaggerSpec = swaggerJSDoc({
       version: '1.0.0',
     },
     components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
       schemas: {
         ApiResponse: {
           type: 'object',
@@ -37,6 +44,11 @@ export const swaggerSpec = swaggerJSDoc({
         },
       },
     },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   apis: ['src/interfaces/controllers/*.ts'],
 });
