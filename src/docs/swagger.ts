@@ -7,6 +7,36 @@ export const swaggerSpec = swaggerJSDoc({
       title: 'Todo API',
       version: '1.0.0',
     },
+    components: {
+      schemas: {
+        ApiResponse: {
+          type: 'object',
+          properties: {
+            code: {
+              type: 'integer',
+              example: 200,
+            },
+            status: {
+              type: 'string',
+              example: 'success',
+            },
+            message: {
+              type: 'string',
+              example: 'User created',
+            },
+            data: {
+              type: 'object',
+              nullable: true,
+              example: {
+                id: 'uuid-v4',
+                email: 'user@example.com',
+                role: 'user',
+              },
+            },
+          },
+        },
+      },
+    },
   },
   apis: ['src/interfaces/controllers/*.ts'],
 });
