@@ -6,7 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "baseUrl": "./src",
-    "types": [],
+    "types": ["jest"],
     "paths": {
       "@docs": ["docs/index"],
       "@application/*": ["application/*"],
